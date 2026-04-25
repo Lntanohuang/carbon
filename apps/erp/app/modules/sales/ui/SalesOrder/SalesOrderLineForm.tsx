@@ -41,6 +41,7 @@ import {
   Item,
   Location,
   Number,
+  Input,
   NumberControlled,
   SelectControlled,
   StorageUnit,
@@ -471,6 +472,12 @@ const SalesOrderLineForm = ({
                                 methodType: newValue?.value
                               }));
                           }}
+                        />
+                        {/* Pleato: spec field for processing parameters */}
+                        <Input
+                          name="spec"
+                          label={t`Spec / Parameters`}
+                          placeholder={t`e.g. 304, 2mm, 90°`}
                         />
                         <NumberControlled
                           name="saleQuantity"

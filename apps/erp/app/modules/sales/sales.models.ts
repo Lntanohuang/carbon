@@ -690,7 +690,13 @@ export const salesOrderValidator = z.object({
   currencyCode: zfd.text(z.string()),
   exchangeRate: zfd.numeric(z.number().optional()),
   exchangeRateUpdatedAt: zfd.text(z.string().optional()),
-  salesPersonId: zfd.text(z.string().optional())
+  salesPersonId: zfd.text(z.string().optional()),
+  // Pleato extensions
+  discountAmount: zfd.numeric(z.number().min(0).optional()),
+  taxRate: zfd.numeric(z.number().min(0).max(1).optional()),
+  deliveryAddr: zfd.text(z.string().optional()),
+  deliveryDate: zfd.text(z.string().optional()),
+  pleato_paymentTerms: zfd.text(z.string().optional())
 });
 
 export const salesOrderShipmentValidator = z
@@ -760,7 +766,10 @@ export const salesOrderLineValidator = z
     ),
     unitOfMeasureCode: zfd.text(z.string().optional()),
     unitPrice: zfd.numeric(z.number().optional()),
-    exchangeRate: zfd.numeric(z.number().optional())
+    exchangeRate: zfd.numeric(z.number().optional()),
+    // Pleato extensions
+    spec: zfd.text(z.string().optional()),
+    deliveredQty: zfd.numeric(z.number().min(0).optional())
   })
   .refine((data) => (data.salesOrderLineType === "Part" ? data.itemId : true), {
     message: "Part is required",
