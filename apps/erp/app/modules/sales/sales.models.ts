@@ -76,7 +76,12 @@ export const customerValidator = z.object({
   ),
   vatNumber: zfd.text(z.string().optional()),
   salesContactId: zfd.text(z.string().optional()),
-  website: zfd.text(z.string().optional())
+  website: zfd.text(z.string().optional()),
+  // Pleato extensions
+  wechatId: zfd.text(z.string().optional()),
+  addressDefault: zfd.text(z.string().optional()),
+  creditLimit: zfd.numeric(z.number().min(0).optional()),
+  paymentCycleDays: zfd.numeric(z.number().int().min(0).optional()),
   // defaultCc: z.array(z.string().email()).default([])
 });
 

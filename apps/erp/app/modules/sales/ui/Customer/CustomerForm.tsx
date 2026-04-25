@@ -156,6 +156,24 @@ const CustomerForm = ({
                   <Input name="vatNumber" label={t`VAT Number`} />
                   <Input name="website" label={t`Website`} />
 
+                  {/* Pleato extensions */}
+                  <Input name="wechatId" label={t`WeChat ID`} />
+                  <Input
+                    name="addressDefault"
+                    label={t`Default Address`}
+                  />
+                  <Number
+                    name="creditLimit"
+                    label={t`Credit Limit`}
+                    minValue={0}
+                  />
+                  <Number
+                    name="paymentCycleDays"
+                    label={t`Payment Cycle (Days)`}
+                    minValue={0}
+                    step={1}
+                  />
+
                   {/* <EmailRecipients name="defaultCc" label="Default CC" /> */}
                   <CustomFormFields table="customer" />
                 </div>

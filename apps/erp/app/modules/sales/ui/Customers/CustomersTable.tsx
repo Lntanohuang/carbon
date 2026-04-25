@@ -13,16 +13,20 @@ import { memo, useCallback, useMemo, useState } from "react";
 import {
   LuBookMarked,
   LuCalendar,
+  LuCreditCard,
   LuEuro,
   LuGlobe,
+  LuMessageSquare,
   LuPencil,
   LuPhone,
   LuPrinter,
   LuShapes,
   LuStar,
   LuTag,
+  LuTimer,
   LuTrash,
-  LuUser
+  LuUser,
+  LuWallet
 } from "react-icons/lu";
 import { Link, useNavigate } from "react-router";
 import {
@@ -196,6 +200,47 @@ const CustomersTable = memo(
           }
         },
         {
+          accessorKey: "wechatId",
+          header: t`WeChat ID`,
+          cell: (item) => item.getValue(),
+          meta: {
+            icon: <LuMessageSquare />
+          }
+        },
+        {
+          accessorKey: "creditLimit",
+          header: t`Credit Limit`,
+          cell: (item) => {
+            const val = item.getValue<number>();
+            return val != null ? `¥${val.toLocaleString()}` : null;
+          },
+          meta: {
+            icon: <LuCreditCard />
+          }
+        },
+        {
+          accessorKey: "paymentCycleDays",
+          header: t`Payment Cycle`,
+          cell: (item) => {
+            const val = item.getValue<number>();
+            return val != null ? `${val} days` : null;
+          },
+          meta: {
+            icon: <LuTimer />
+          }
+        },
+        {
+          accessorKey: "totalUnpaid",
+          header: t`Total Unpaid`,
+          cell: (item) => {
+            const val = item.getValue<number>();
+            return val != null ? `¥${val.toLocaleString()}` : null;
+          },
+          meta: {
+            icon: <LuWallet />
+          }
+        },
+        {
           id: "createdBy",
           header: t`Created By`,
           cell: ({ row }) => (
@@ -295,6 +340,10 @@ const CustomersTable = memo(
             phone: false,
             fax: false,
             website: false,
+            wechatId: false,
+            creditLimit: false,
+            paymentCycleDays: false,
+            totalUnpaid: false,
             createdBy: false,
             createdAt: false,
             updatedBy: false,
