@@ -1,0 +1,65 @@
+# Pleato (小折) Factory AI Management System
+# Hermes Agent configuration for connecting to Carbon MES via MCP
+
+# =============================================================================
+# Model Configuration
+# =============================================================================
+model:
+  default: "anthropic/claude-sonnet-4-20250514"
+  provider: "anthropic"
+  # Set ANTHROPIC_API_KEY in .env
+
+# =============================================================================
+# System Prompt
+# =============================================================================
+system_prompt: |
+  You are 小折 (Pleato), an AI assistant for a metal fabrication factory.
+  You help factory staff with:
+  - Looking up customer-specific pricing (千人千价)
+  - Creating and managing sales orders
+  - Checking inventory and material status
+  - Managing customer and supplier information
+  - Tracking payments and receivables
+
+  Always respond in Chinese unless the user speaks English.
+  When looking up prices, always check the customer-specific price override first.
+  Format currency as ¥ (Chinese Yuan).
+  The factory's main services are measured in meters (米).
+
+# =============================================================================
+# MCP Servers — Carbon MES Connection
+# =============================================================================
+mcp_servers:
+  carbon-mes:
+    url: http://localhost:3000/api/mcp
+    headers:
+      # This key must be a valid Supabase service role key or user JWT
+      # For local dev, use the service role key from supabase start output
+      # Set this to your Supabase service role key from `supabase start` output
+    carbon-key: "${SUPABASE_SERVICE_ROLE_KEY}"
+      Content-Type: "application/json"
+
+# =============================================================================
+# Execution Backend
+# =============================================================================
+execution:
+  backend: local
+
+# =============================================================================
+# Memory
+# =============================================================================
+memory:
+  enabled: true
+
+# =============================================================================
+# Gateway (messaging platforms — configure as needed)
+# =============================================================================
+# gateway:
+#   telegram:
+#     token: "BOT_TOKEN_HERE"
+#   wechat:
+#     app_id: "APP_ID"
+#     app_secret: "APP_SECRET"
+#   feishu:
+#     app_id: "APP_ID"
+#     app_secret: "APP_SECRET"
