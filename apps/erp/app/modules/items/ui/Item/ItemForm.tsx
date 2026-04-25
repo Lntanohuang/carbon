@@ -27,6 +27,7 @@ import {
   DefaultMethodType,
   Hidden,
   Input,
+  Number,
   Select,
   Submit,
   TextArea,
@@ -178,6 +179,14 @@ const ItemForm = ({ initialValues, type }: ItemFormProps) => {
             <UnitOfMeasure
               name="unitOfMeasureCode"
               label={t`Unit of Measure`}
+            />
+
+            {/* Pleato extensions */}
+            <Input name="category" label={t`Category`} />
+            <Number
+              name="defaultPrice"
+              label={t`Default Price`}
+              minValue={0}
             />
 
             <Boolean name="active" label={t`Active`} />

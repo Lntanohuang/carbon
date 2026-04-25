@@ -92,7 +92,10 @@ export const itemValidator = z.object({
   unitOfMeasureCode: z
     .string()
     .min(1, { message: "Unit of Measure is required" }),
-  unitCost: zfd.numeric(z.number().nonnegative().optional())
+  unitCost: zfd.numeric(z.number().nonnegative().optional()),
+  // Pleato extensions
+  category: zfd.text(z.string().optional()),
+  defaultPrice: zfd.numeric(z.number().min(0).optional())
 });
 
 export const configurationParameterGroupValidator = z.object({
@@ -526,7 +529,10 @@ export const serviceValidator = itemValidator.merge(
       errorMap: (issue, ctx) => ({
         message: "Service type is required"
       })
-    })
+    }),
+    // Pleato extensions
+    category: zfd.text(z.string().optional()),
+    defaultPrice: zfd.numeric(z.number().min(0).optional())
   })
 );
 
