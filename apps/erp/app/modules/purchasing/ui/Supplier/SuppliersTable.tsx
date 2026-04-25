@@ -190,6 +190,33 @@ const SuppliersTable = memo(({ data, count, tags }: SuppliersTableProps) => {
         }
       },
       {
+        accessorKey: "wechatId",
+        header: t`WeChat ID`,
+        cell: (item) => item.getValue(),
+        meta: {
+          icon: <LuGlobe />
+        }
+      },
+      {
+        accessorKey: "paymentTerms",
+        header: t`Payment Terms`,
+        cell: (item) => item.getValue(),
+        meta: {
+          icon: <LuGlobe />
+        }
+      },
+      {
+        accessorKey: "totalPayable",
+        header: t`Total Payable`,
+        cell: (item) => {
+          const val = item.getValue<number>();
+          return val != null ? `¥${val.toLocaleString()}` : null;
+        },
+        meta: {
+          icon: <LuGlobe />
+        }
+      },
+      {
         id: "createdBy",
         header: t`Created By`,
         cell: ({ row }) => (
@@ -281,6 +308,9 @@ const SuppliersTable = memo(({ data, count, tags }: SuppliersTableProps) => {
           phone: false,
           fax: false,
           website: false,
+          wechatId: false,
+          paymentTerms: false,
+          totalPayable: false,
           createdBy: false,
           createdAt: false,
           updatedBy: false,

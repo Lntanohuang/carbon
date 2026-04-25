@@ -314,7 +314,10 @@ export const supplierValidator = z.object({
   purchasingContactId: zfd.text(z.string().optional()),
   taxId: zfd.text(z.string().optional()),
   vatNumber: zfd.text(z.string().optional()),
-  website: zfd.text(z.string().optional())
+  website: zfd.text(z.string().optional()),
+  // Pleato extensions
+  wechatId: zfd.text(z.string().optional()),
+  paymentTerms: zfd.text(z.string().optional())
   // defaultCc: z.array(z.string().email()).default([])
 });
 

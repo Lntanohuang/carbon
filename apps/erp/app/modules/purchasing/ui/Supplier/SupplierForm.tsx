@@ -141,6 +141,10 @@ const SupplierForm = ({
                   <Input name="vatNumber" label={t`VAT Number`} />
                   <Input name="website" label={t`Website`} />
 
+                  {/* Pleato extensions */}
+                  <Input name="wechatId" label={t`WeChat ID`} />
+                  <Input name="paymentTerms" label={t`Payment Terms`} />
+
                   {/* <EmailRecipients name="defaultCc" label={t`Default CC`} /> */}
                   <CustomFormFields table="supplier" />
                 </div>
