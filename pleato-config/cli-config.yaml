@@ -33,10 +33,9 @@ mcp_servers:
   carbon-mes:
     url: http://localhost:3000/api/mcp
     headers:
-      # This key must be a valid Supabase service role key or user JWT
-      # For local dev, use the service role key from supabase start output
-      # Set this to your Supabase service role key from `supabase start` output
-    carbon-key: "${SUPABASE_SERVICE_ROLE_KEY}"
+      # Carbon API key — generate in Carbon ERP: Settings → API Keys
+      # NOT the Supabase key. Requires a registered user + company first.
+      carbon-key: "${CARBON_API_KEY}"
       Content-Type: "application/json"
 
 # =============================================================================
