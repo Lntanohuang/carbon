@@ -33,6 +33,7 @@ import {
 import { RealtimeDataProvider } from "~/components";
 import { PrimaryNavigation, Topbar } from "~/components/Layout";
 import { TimeCardWarning } from "~/components/TimeCardWarning";
+import { PleatoPanel } from "~/components/PleAI/PleatoPanel";
 import TrainingPanel from "~/components/TrainingPanel";
 import { useTrainingPanel } from "~/hooks/useTrainingPanel";
 import { getOpenClockEntry } from "~/modules/people";
@@ -213,6 +214,7 @@ export default function AuthenticatedRoute() {
                   </main>
                 </div>
               </div>
+              <PleatoPanel />
               <TrainingPanel
                 training={training}
                 isOpen={isOpen}
