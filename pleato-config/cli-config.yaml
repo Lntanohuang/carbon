@@ -5,9 +5,10 @@
 # Model Configuration
 # =============================================================================
 model:
-  default: "anthropic/claude-sonnet-4-20250514"
-  provider: "anthropic"
-  # Set ANTHROPIC_API_KEY in .env
+  default: "qwen3.6-plus"
+  provider: "custom"
+  api_key: "sk-b3579fc06047464aae986b032b321ea6"
+  base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
 
 # =============================================================================
 # System Prompt
@@ -33,9 +34,7 @@ mcp_servers:
   carbon-mes:
     url: http://localhost:3000/api/mcp
     headers:
-      # Carbon API key — generate in Carbon ERP: Settings → API Keys
-      # NOT the Supabase key. Requires a registered user + company first.
-      carbon-key: "${CARBON_API_KEY}"
+      carbon-key: "pleato-dev-api-key-2026"
       Content-Type: "application/json"
 
 # =============================================================================
